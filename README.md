@@ -17,7 +17,7 @@ Neuevault は、Obsidian の保管庫（Vault）をすばやく構築するた�
 ## 前提条件
 
 - Python 3.10 以降
-- Cookiecutter
+- Cookiecutter（`uvx` や `pipx` を使う場合は事前インストール不要）
 - インターネット接続（プラグインのダウンロード時に使用）
 
 ## 使い方
@@ -28,9 +28,13 @@ Neuevault は、Obsidian の保管庫（Vault）をすばやく構築するた�
 cookiecutter gh:naoyaikeda/neuevault
 ```
 
-`pipx` を使う場合は、事前に Cookiecutter をインストールせずに直接実行できます。
+`uvx` や `pipx` を使うと、Cookiecutter を個別にインストールすることなく直接実行できます。
 
 ```sh
+# uvx を使う場合
+uvx cookiecutter gh:naoyaikeda/neuevault
+
+# pipx を使う場合
 pipx run cookiecutter gh:naoyaikeda/neuevault
 ```
 
