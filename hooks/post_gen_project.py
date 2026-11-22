@@ -7,7 +7,7 @@ PLUGINS = {
     "dataview": "blacksmithgu/obsidian-dataview",
     "templater-obsidian": "SilentVoid13/Templater",
     "smart-connections": "brianpetro/obsidian-smart-connections",
-    "smart-lookup": "brianpetro/obsidian-smart-lookup",
+    "smart-lookup": "brianpetro/smart-lookup-obsidian",
 }
 
 ASSETS = ("main.js", "manifest.json", "styles.css")
