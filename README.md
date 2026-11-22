@@ -10,9 +10,11 @@ Neuevault は、Obsidian の保管庫（Vault）をすばやく構築するた�
 - **プラグインの自動セットアップ**
   保管庫の生成時にフックスクリプトが実行され、GitHub Releases から最新版プラグイン（Dataview、Templater、Smart Connections、Smart Lookup）を直接取得して有効化します。
 - **AI エージェント運用への配慮**
-  リポジトリ内に `AGENTS.md` を配置し、AI エージェントが Wikilink や Frontmatter を適切に扱えるよう指針を明記しています。
+  リポジトリ内に `AGENTS.md` や `CLAUDE.md` を配置し、AI エージェント（Claude Code 等）が Wikilink や Frontmatter を適切に扱えるよう指針を明記しています。
 - **実用的なテンプレート**
   日々の記録に使えるデイリーノート用と、汎用的なメモ用のテンプレートを同梱しています。
+- **タグ生成スキルの同梱**
+  メモの内容を解析して適切な階層タグ（`tech/python` など）を付与するエージェントスキルおよび自動化スクリプトを同梱しています。
 
 ## 前提条件
 
@@ -54,6 +56,9 @@ author_name [Your Name]: Taro Yamada
 
 ```text
 <vault_slug>/
+├── .agents/                 # AI エージェント用リソース
+│   └── skills/
+│       └── tag-generation/  # メモ用タグ自動生成スキル・スクリプト
 ├── .gitignore
 ├── .obsidian/               # Obsidian 設定ファイル
 │   ├── app.json             # 添付ファイルや新規ノートの保存先設定
@@ -68,7 +73,25 @@ author_name [Your Name]: Taro Yamada
 ├── Archives/                # 添付ファイルおよびアーカイブ保存用
 ├── Daily/                   # デイリーノート保存用
 ├── Memo/                    # 新規メモ保存用
-└── AGENTS.md                # AI エージェント向け運用ガイドライン
+├── AGENTS.md                # AI エージェント向け運用ガイドライン
+└── CLAUDE.md                # Claude Code 向け設定ファイル（AGENTS.md 参照）
+```
+
+## タグ生成スキル（tag-generation）
+
+`Memo/` 配下のノートを解析し、内容に応じたタグ（`tech/python` や `work/project-a` など）を YAML Frontmatter に付与・補正するエージェントスキルを同梱しています。
+
+AI エージェントがノート整理の指針として参照するほか、付属の Python スクリプトで未分類ノートの検出やタグ付けを一括実行できます。
+
+```sh
+# 未分類・タグ不足ノートの確認
+python .agents/skills/tag-generation/scripts/generate_tags.py --check
+
+# タグ付与結果の事前プレビュー
+python .agents/skills/tag-generation/scripts/generate_tags.py --dry-run
+
+# タグを実際に適用
+python .agents/skills/tag-generation/scripts/generate_tags.py --apply
 ```
 
 ## 自動インストールされるプラグイン
