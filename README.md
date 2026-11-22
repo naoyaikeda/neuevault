@@ -76,4 +76,4 @@ author_name [Your Name]: Taro Yamada
 | **Dataview** | `blacksmithgu/obsidian-dataview` | メタデータを利用したクエリ・一覧表示 |
 | **Templater** | `SilentVoid13/Templater` | 動的テンプレート作成・挿入 |
 | **Smart Connections** | `brianpetro/obsidian-smart-connections` | AI によるノート間の関連性探索・チャット |
-| **Smart Lookup** | `brianpetro/obsidian-smart-lookup` | セマンティック検索・情報抽出 |
+| **Smart Lookup** | `brianpetro/smart-lookup-obsidian` | セマンティック検索・情報抽出 |
