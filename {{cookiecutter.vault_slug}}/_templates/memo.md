@@ -1,4 +1,5 @@
 ---
+type: memo
 date: "{% raw %}{{date:YYYY-MM-DD}}{% endraw %}"
 tags:
   - memo
@@ -6,7 +7,7 @@ tags:
 # {% raw %}{{title}}{% endraw %}
 
 ## 概要
-- 
+-
 
 ## 詳細
-- 
+-

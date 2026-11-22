@@ -1,15 +1,19 @@
 ---
+type: daily
 date: "{% raw %}{{date:YYYY-MM-DD}}{% endraw %}"
 tags:
   - daily
 ---
 # {% raw %}{{date:YYYY-MM-DD}}{% endraw %}
 
-## 今日の目標・予定
-- [ ] 
+## スケジュール
 
-## ログ・作業記録
-- 
+## タスク
+- [ ]
 
-## 振り返り・メモ
-- 
+## メモ
+-
+
+## 作業ログ
+-
+
