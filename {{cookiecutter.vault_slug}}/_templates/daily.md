@@ -4,7 +4,6 @@ date: "{% raw %}{{date:YYYY-MM-DD}}{% endraw %}"
 tags:
   - daily
 ---
-# {% raw %}{{date:YYYY-MM-DD}}{% endraw %}
 
 ## スケジュール
 
