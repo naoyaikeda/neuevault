@@ -1,0 +1,6 @@
+{
+  "vault_name": "My Vault",
+  "vault_slug": "{{ cookiecutter.vault_name.lower().replace(' ', '-') }}",
+  "vault_description": "My Obsidian Vault",
+  "author_name": "Your Name"
+}
