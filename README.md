@@ -24,8 +24,8 @@ Zettelkasten のようにノートを細分化して相互リンクを編み上�
   リポジトリ内に `AGENTS.md` や `CLAUDE.md` を配置し、AI エージェント（Claude Code 等）が Wikilink や Frontmatter を適切に扱えるよう指針を明記しています。
 - **実用的なテンプレート**
   日々の記録に使えるデイリーノート用と、汎用的なメモ用のテンプレートを同梱しています。
-- **タグ生成スキルの同梱**
-  メモの内容を解析して適切な階層タグ（`tech/python` など）を付与するエージェントスキルおよび自動化スクリプトを同梱しています。
+- **AI エージェントスキルの同梱**
+  メモの内容を解析して適切な階層タグ（`tech/python` など）を付与する `tag-generation` や、散乱した添付ファイルを衝突防止リネームを伴って `Archives/` へ集約する `arrange-assets` を同梱しています。
 
 ## 前提条件
 
@@ -69,6 +69,7 @@ author_name [Your Name]: Taro Yamada
 <vault_slug>/
 ├── .agents/                 # AI エージェント用リソース
 │   └── skills/
+│       ├── arrange-assets/  # 添付ファイル集約・リネームスキル・スクリプト
 │       └── tag-generation/  # メモ用タグ自動生成スキル・スクリプト
 ├── .gitignore
 ├── .obsidian/               # Obsidian 設定ファイル
@@ -103,6 +104,23 @@ python .agents/skills/tag-generation/scripts/generate_tags.py --dry-run
 
 # タグを実際に適用
 python .agents/skills/tag-generation/scripts/generate_tags.py --apply
+```
+
+## 添付ファイル整理スキル（arrange-assets）
+
+Vault 内に散乱している画像や PDF などの添付ファイルを検出し、設定された保存先（デフォルト: `Archives/`）へ安全に集約・移動するエージェントスキルを同梱しています。
+
+数字のみの名前（`01.png`）や汎用名（`Image 1.png`）などの衝突しやすいファイル名は、参照元ノート名を付与してリネーム（例: `ノート名_01.png`）し、Markdown 内のリンク（Wikilink 等）も自動で追従更新します。
+
+```sh
+# 散乱している添付ファイルの確認
+python .agents/skills/arrange-assets/scripts/arrange_assets.py --check
+
+# 移動・リンク更新の事前プレビュー
+python .agents/skills/arrange-assets/scripts/arrange_assets.py --dry-run
+
+# 添付ファイルの集約・リンク更新を実際に実行
+python .agents/skills/arrange-assets/scripts/arrange_assets.py --apply
 ```
 
 ## 自動インストールされるプラグイン
